@@ -5,7 +5,7 @@
 3. Databricks - Create databricks in a secure cluster connectivity configuration, using the subnets created prevously.
 4. SQL - Create a SQL server with a private endpoint.
 5. StorageAccount - Create a storage account with a private endpoint.
-6. DataFactory - Creae a data factory with a managed virtual network and create private endpoints for the SQL server and storage account.
+6. DataFactory - Create a data factory with a managed virtual network and create private endpoints for the SQL server and storage account.
 
 <p>
 	<span>
