@@ -1,29 +1,31 @@
  variable "mssql_tags" {
   type = map(any)
   default = {
-    "Application ID" : "AP123456",
-    "Application Name" : "Elimin8Cancer PoC",
-    "Application Owner" : "James Wake",
-    "Cost Center" : "123456",
-    "Environment" : "POC",
-    "Organization" : "Oncology R&D"
+    "Application ID" : "",
+    "Application Name" : "",
+    "Application Owner" : "",
+    "Cost Center" : "",
+    "Creation Date" : "",
+    "Environment" : "",
+    "IDMD No" : "",
+    "Organization" : ""
   }
 }
 variable "mssql_server_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "mssql_server_resource_group_name" {
   type    = string
-  default = "SRH-RG-DATABRICKS-01"
+  default = "az-preview-eu-oncology-rsg"
 }
 variable "mssql_server_name" {
   type    = string
-  default = "srh-mssql-server-01"
+  default = "az-preview-eu-oncologypoc-sql-server-01"
 }
 variable "mssql_server_location" {
   type    = string
-  default = "westeurope"
+  default = "uksouth"
 }
 variable "mssql_server_version" {
   type    = string
@@ -31,41 +33,39 @@ variable "mssql_server_version" {
 }
 variable "mssql_server_administrator_login" {
   type    = string
-  default = "srh"
 }
 variable "mssql_server_administrator_login_password" {
   type    = string
-  default = "SqlP@ssW0rd192837465"
 }
 variable "private_endpoint_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "private_endpoint_name" {
   type    = string
-  default = "SRH-PRIVATEENDPOINT-DATABRICKS-01-MYSQL-SERVER-01"
+  default = "az-preview-eu-oncologypoc-sql-server-01-ep"
 }
 variable "private_endpoint_resource_group_name" {
   type    = string
-  default = "SRH-RG-DATABRICKS-01"
+  default = "az-preview-eu-oncology-rsg"
 }
 variable "private_endpoint_location" {
   type    = string
-  default = "westeurope"
+  default = "uksouth"
 }
 variable "private_endpoint_subnet_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "private_endpoint_subnet_resource_group_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-preview-eu-networking-rsg"
 }
 variable "private_endpoint_subnet_vnet_name" {
   type    = string
-  default = "SRH-VNET-WESTEUROPE"
+  default = "az-preview-eu-vnet"
 }
 variable "private_endpoint_subnet_name" {
   type    = string
-  default = "DATABRICKS-01"
+  default = "az-preview-eu-databricks-subnet"
 }
