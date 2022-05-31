@@ -25,7 +25,7 @@ variable "datafactory_location" {
 }
 variable "datafactory_name" {
   type    = string
-  default = "azprev-eu-oncologypoc-df-01"
+  default = "az-preview-eu-oncologypoc-df-01"
 }
 variable "mssql_server_subscription_id" {
   type    = string
