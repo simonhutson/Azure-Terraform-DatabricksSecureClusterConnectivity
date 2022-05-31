@@ -1,67 +1,69 @@
 variable "databricks_tags" {
   type = map(any)
   default = {
-    "Application ID" : "AP123456",
-    "Application Name" : "Elimin8Cancer PoC",
-    "Application Owner" : "James Wake",
-    "Cost Center" : "123456",
-    "Environment" : "POC",
-    "Organization" : "Oncology R&D"
+    "Application ID" : "",
+    "Application Name" : "",
+    "Application Owner" : "",
+    "Cost Center" : "",
+    "Creation Date" : "",
+    "Environment" : "",
+    "IDMD No" : "",
+    "Organization" : ""
   }
 }
 variable "databricks_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "databricks_resource_group_name" {
   type    = string
-  default = "SRH-RG-DATABRICKS-01"
+  default = "az-preview-eu-oncology-rsg"
 }
 variable "databricks_managed_resource_group_name" {
   type    = string
-  default = "SRH-RG-DATABRICKS-01-MANAGED"
+  default = "az-preview-eu-oncology-managed-rsg"
 }
 variable "databricks_location" {
   type    = string
-  default = "westeurope"
+  default = "uksouth"
 }
 variable "databricks_name" {
   type    = string
-  default = "SRH-DATABRICKS-01"
+  default = "azprev-eu-oncologypoc-dbw-01"
 }
 variable "databricks_private_subnet_name" {
   type    = string
-  default = "DATABRICKS-01-PRIVATE"
+  default = "az-preview-eu-databricks-private-subnet"
 }
 variable "databricks_public_subnet_name" {
   type    = string
-  default = "DATABRICKS-01-PUBLIC"
+  default = "az-preview-eu-databricks-public-subnet"
 }
 variable "databricks_storage_account_name" {
   type    = string
-  default = "srhstoragedatabricks01"
+  default = "azpreuondbw01"
 }
 variable "vnet_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "vnet_resource_goup_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-preview-eu-networking-rsg"
 }
 variable "vnet_name" {
   type    = string
-  default = "SRH-VNET-WESTEUROPE"
+  default = "az-preview-eu-vnet"
 }
 variable "nsg_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "nsg_resource_group_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-preview-eu-networking-rsg"
 }
 variable "nsg_name" {
   type    = string
-  default = "SRH-NSG-DATABRICKS"
+  default = "az-preview-eu-databricks-nsg"
 }
