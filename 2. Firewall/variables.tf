@@ -1,36 +1,36 @@
-variable "vnet_databricks_subscription_id" {
+variable "vnet_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
-variable "vnet_databricks_resource_group_name" {
+variable "vnet_resource_group_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-preview-eu-networking-rsg"
 }
-variable "vnet_databricks_name" {
+variable "vnet_name" {
   type    = string
-  default = "SRH-VNET-WESTEUROPE"
+  default = "az-preview-eu-vnet"
 }
-variable "vnet_databricks_public_subnet_name" {
+variable "databricks_public_subnet_name" {
   type    = string
-  default = "DATABRICKS-01-PUBLIC"
+  default = "az-preview-eu-databricks-public-subnet"
 }
 variable "firewall_policy_subscription_id" {
   type    = string
-  default = "25d7b58f-a2ed-4c46-a3f7-1748a5e0934b"
+  default = "e63a6060-c456-481c-bfd1-92b73a1d389e"
 }
 variable "firewall_policy_resource_group_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-connectivity-eu-networking-rsg"
 }
 variable "firewall_policy_name" {
   type    = string
-  default = "SRH-FIREWALLPOLICY-01"
+  default = "az-hub-eu-firewall-policy"
 }
 variable "firewall_rule_collection_group_name" {
   type    = string
-  default = "SRH-RULECOLLECTIONGROUP-DATABRICKS-01"
+  default = "az-hub-eu-firewall-application-rcg"
 }
 variable "firewall_rule_collection_name" {
   type    = string
-  default = "SRH-RULECOLLECTION-DATABRICKS-01"
+  default = "az-hub-eu-firewall-databricks-poc-allow-rc"
 }
