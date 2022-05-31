@@ -4,8 +4,8 @@ provider "azurerm" {
 
 # Databricks VNET subscription
 provider "azurerm" {
-  alias           = "vnet_databricks_sub"
-  subscription_id = var.vnet_databricks_subscription_id
+  alias           = "vnet_sub"
+  subscription_id = var.vnet_subscription_id
   features {}
 }
 
@@ -18,10 +18,10 @@ provider "azurerm" {
 
 # Get existing Databricks public subnet
 data "azurerm_subnet" "databricks_public" {
-  provider             = azurerm.vnet_databricks_sub
-  virtual_network_name = var.vnet_databricks_name
+  provider             = azurerm.vnet_sub
+  virtual_network_name = var.vnet_name
   name                 = var.vnet_databricks_public_subnet_name
-  resource_group_name  = var.vnet_databricks_resource_group_name
+  resource_group_name  = var.vnet_resource_group_name
 }
 
 # Get existing Firewall Policy
@@ -32,7 +32,7 @@ data "azurerm_firewall_policy" "databricks" {
 }
 
 locals {
-  subnet_databricks_public-address_prefixes = data.azurerm_subnet.databricks_public.address_prefixes
+  subnet_databricks_public_address_prefixes = data.azurerm_subnet.databricks_public.address_prefixes
 }
 
 resource "azurerm_firewall_policy_rule_collection_group" "databricks" {
@@ -46,7 +46,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "databricks" {
     rule {
       name                  = "Databricks.Global"
       protocols             = ["TCP"]
-      source_addresses      = local.subnet_databricks_public-address_prefixes
+      source_addresses      = local.subnet_databricks_public_address_prefixes
       destination_addresses = ["AzureDatabricks"]
       destination_ports     = ["443"]
     }
@@ -54,21 +54,21 @@ resource "azurerm_firewall_policy_rule_collection_group" "databricks" {
       name      = "MySql.WestEurope"
       protocols = ["TCP"]
       #      source_addresses      = [var.databricks_public_subnet_prefix]
-      source_addresses      = local.subnet_databricks_public-address_prefixes
+      source_addresses      = local.subnet_databricks_public_address_prefixes
       destination_addresses = ["Sql.WestEurope"]
       destination_ports     = ["3306"]
     }
     rule {
       name                  = "Storage.WestEurope Storage.NorthEurope"
       protocols             = ["TCP"]
-      source_addresses      = local.subnet_databricks_public-address_prefixes
+      source_addresses      = local.subnet_databricks_public_address_prefixes
       destination_addresses = ["Storage.WestEurope", "Storage.NorthEurope"]
       destination_ports     = ["443"]
     }
     rule {
       name                  = "EventHub.WestEurope"
       protocols             = ["TCP"]
-      source_addresses      = local.subnet_databricks_public-address_prefixes
+      source_addresses      = local.subnet_databricks_public_address_prefixes
       destination_addresses = ["EventHub.WestEurope"]
       destination_ports     = ["9093"]
     }
