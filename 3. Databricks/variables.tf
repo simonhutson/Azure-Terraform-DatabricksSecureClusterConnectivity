@@ -29,7 +29,7 @@ variable "databricks_location" {
 }
 variable "databricks_name" {
   type    = string
-  default = "azprev-eu-oncologypoc-dbw-01"
+  default = "az-preview-eu-oncologypoc-dbw-01"
 }
 variable "databricks_private_subnet_name" {
   type    = string
