@@ -6,3 +6,5 @@
 4. SQL - Create a SQL server with a private endpoint.
 5. StorageAccount - Create a storage account with a private endpoint.
 6. DataFactory - Creae a data factory with a managed virtual network and create private endpoints for the SQL server and storage account.
+
+![Architecture Diagram]([https://your-copied-image-address](https://github.com/simonhutson/Azure-Terraform-DatabricksSecureClusterConnectivity/blob/main/Architecture%20Diagram.jpg))
