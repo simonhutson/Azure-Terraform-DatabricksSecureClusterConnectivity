@@ -41,7 +41,7 @@ variable "private_endpoint_subscription_id" {
 }
 variable "private_endpoint_name" {
   type    = string
-  default = "az-preview-eu-oncologypoc-sql-server-01-ep"
+  default = "az-preview-eu-oncologypoc-storage-account-02-ep"
 }
 variable "private_endpoint_resource_group_name" {
   type    = string
