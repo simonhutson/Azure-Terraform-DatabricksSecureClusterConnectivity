@@ -37,6 +37,10 @@ variable "mssql_server_administrator_login" {
 variable "mssql_server_administrator_login_password" {
   type    = string
 }
+variable "mssql_database_name" {
+  type    = string
+  default = "az_data_model_new"
+}
 variable "private_endpoint_subscription_id" {
   type    = string
   default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
