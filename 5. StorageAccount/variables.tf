@@ -27,14 +27,6 @@ variable "storage_account_location" {
   type    = string
   default = "uksouth"
 }
-variable "storage_account_tier" {
-  type    = string
-  default = "Standard"
-}
-variable "storage_account_replication_type" {
-  type    = string
-  default = "LRS"
-}
 variable "private_endpoint_subscription_id" {
   type    = string
   default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
