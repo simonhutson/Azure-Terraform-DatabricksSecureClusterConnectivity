@@ -30,11 +30,28 @@ resource "azurerm_mssql_server" "databricks" {
   resource_group_name          = var.mssql_server_resource_group_name
   location                     = var.mssql_server_location
   tags                         = var.mssql_tags
-  version                      = var.mssql_server_version
   administrator_login          = var.mssql_server_administrator_login
   administrator_login_password = var.mssql_server_administrator_login_password
+  version                      = "12.0"
   minimum_tls_version          = "1.2"
   public_network_access_enabled = false
+}
+
+resource "azurerm_mssql_database" "databricks" {
+  provider = azurerm.mssql_server_sub
+  name = var.mssql_database_name
+  server_id = azurerm_mssql_server.databricks.id
+  sku_name = "GP_Gen5_2"
+  collation = "SQL_Latin1_General_CP1_CI_AS"
+  license_type = "LicenseIncluded"
+  read_scale = false
+  ledger_enabled = false
+  zone_redundant = false
+  geo_backup_enabled = true
+  transparent_data_encryption_enabled = true
+  depends_on = [
+    azurerm_mssql_server.databricks
+  ]
 }
 
 resource "azurerm_private_endpoint" "databricks_sql" {
@@ -52,4 +69,7 @@ resource "azurerm_private_endpoint" "databricks_sql" {
       "sqlServer"
     ]
   }
+  depends_on = [
+    azurerm_mssql_server.databricks
+  ]
 }
