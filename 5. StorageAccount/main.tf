@@ -1,4 +1,8 @@
 provider "azurerm" {
+  features {}
+}
+
+provider "azurerm" {
   alias           = "storage_account_sub"
   subscription_id = var.storage_account_subscription_id
   features {}
@@ -20,14 +24,120 @@ data "azurerm_subnet" "databricks" {
 }
 
 resource "azurerm_storage_account" "databricks" {
-  provider                 = azurerm.storage_account_sub
-  name                     = var.storage_account_name
-  resource_group_name      = var.storage_account_resource_group_name
-  location                 = var.storage_account_location
-  tags                     = var.storage_account_tags
-  min_tls_version          = "TLS1_2"
-  account_tier             = var.storage_account_tier
-  account_replication_type = var.storage_account_replication_type
+  provider                          = azurerm.storage_account_sub
+  name                              = var.storage_account_name
+  resource_group_name               = var.storage_account_resource_group_name
+  location                          = var.storage_account_location
+  tags                              = var.storage_account_tags
+  account_tier                      = "Standard"
+  account_replication_type          = "LRS"
+  account_kind                      = "StorageV2"
+  access_tier                       = "Hot"
+  is_hns_enabled                    = true
+  min_tls_version                   = "TLS1_2"
+  enable_https_traffic_only         = true
+  infrastructure_encryption_enabled = true
+  cross_tenant_replication_enabled  = false
+  shared_access_key_enabled         = true
+  nfsv3_enabled                     = false
+  allow_nested_items_to_be_public   = false
+  blob_properties {
+    container_delete_retention_policy {
+      days = 7
+    }
+    delete_retention_policy {
+      days = 7
+    }
+  }
+  network_rules {
+    default_action = "Allow"
+    bypass = [
+      "AzureServices"
+    ]
+    ip_rules                   = []
+    virtual_network_subnet_ids = []
+  }
+}
+
+resource "azurerm_storage_container" "databricks_azdatadl" {
+  name                  = "azdatadl"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_flatiron" {
+  name                  = "flatiron"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_flatiron_aws" {
+  name                  = "flatiron-aws"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_flatiron_raw" {
+  name                  = "flatiron-raw"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_flatiron_unittesting" {
+  name                  = "flatiron-unittesting"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_landing" {
+  name                  = "landing"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_processed_data" {
+  name                  = "processed-data"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_raw" {
+  name                  = "raw"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
+}
+
+resource "azurerm_storage_container" "databricks_test_samples" {
+  name                  = "test-samples"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
 }
 
 resource "azurerm_private_endpoint" "databricks_storage_account" {
@@ -45,4 +155,7 @@ resource "azurerm_private_endpoint" "databricks_storage_account" {
       "blob"
     ]
   }
+  depends_on = [
+    azurerm_storage_account.databricks
+  ]
 }
