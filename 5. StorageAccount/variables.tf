@@ -13,7 +13,7 @@
 }
 variable "storage_account_subscription_id" {
   type    = string
-  default = "2ed9c19-6e49-4acd-98f2-0859cf924b5b"
+  default = "72ed9c19-6e49-4acd-98f2-0859cf924b5b"
 }
 variable "storage_account_resource_group_name" {
   type    = string
