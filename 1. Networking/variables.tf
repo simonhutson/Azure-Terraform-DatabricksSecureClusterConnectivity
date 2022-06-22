@@ -33,7 +33,7 @@ variable "route_table_subscription_id" {
 }
 variable "route_table_resource_group_name" {
   type    = string
-  default = "SRH-CORE"
+  default = "az-preview-eu-networking-rsg"
 }
 variable "route_table_name" {
   type    = string
