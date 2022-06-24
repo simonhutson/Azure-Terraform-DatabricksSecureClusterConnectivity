@@ -1,14 +1,14 @@
  variable "storage_account_tags" {
   type = map(any)
   default = {
-    "Application ID" : "",
-    "Application Name" : "",
-    "Application Owner" : "",
-    "Cost Center" : "",
+    "Application ID" : "NA",
+    "Application Name" : "Oncology",
+    "Application Owner" : "Innotech",
+    "Cost Center" : "6807",
     "Creation Date" : "",
-    "Environment" : "",
-    "IDMD No" : "",
-    "Organization" : ""
+    "Environment" : "Dev",
+    "IDMD No" : "IDMD0000000",
+    "Organization" : "CSIS"
   }
 }
 variable "storage_account_subscription_id" {
