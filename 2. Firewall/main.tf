@@ -51,25 +51,25 @@ resource "azurerm_firewall_policy_rule_collection_group" "databricks" {
       destination_ports     = ["443"]
     }
     rule {
-      name      = "MySql.WestEurope"
+      name      = "MySql.UKSouth"
       protocols = ["TCP"]
       #      source_addresses      = [var.databricks_public_subnet_prefix]
       source_addresses      = local.subnet_databricks_public_address_prefixes
-      destination_addresses = ["Sql.WestEurope"]
+      destination_addresses = ["Sql.UKSouth"]
       destination_ports     = ["3306"]
     }
     rule {
-      name                  = "Storage.WestEurope Storage.NorthEurope"
+      name                  = "Storage.UKSouth Storage.UKWest"
       protocols             = ["TCP"]
       source_addresses      = local.subnet_databricks_public_address_prefixes
-      destination_addresses = ["Storage.WestEurope", "Storage.NorthEurope"]
+      destination_addresses = ["Storage.UKSouth", "Storage.UKWest"]
       destination_ports     = ["443"]
     }
     rule {
-      name                  = "EventHub.WestEurope"
+      name                  = "EventHub.UKSouth"
       protocols             = ["TCP"]
       source_addresses      = local.subnet_databricks_public_address_prefixes
-      destination_addresses = ["EventHub.WestEurope"]
+      destination_addresses = ["EventHub.UKSouth"]
       destination_ports     = ["9093"]
     }
   }
