@@ -166,8 +166,8 @@ resource "azurerm_route" "databricks_global" {
 resource "azurerm_route" "databricks_sql_westeurope" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
-  name                   = "Sql.WestEurope"
-  address_prefix         = "Sql.WestEurope"
+  name                   = "Sql.UKSouth"
+  address_prefix         = "Sql.UKSouth"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
@@ -175,8 +175,8 @@ resource "azurerm_route" "databricks_sql_westeurope" {
 resource "azurerm_route" "databricks_storage_westeurope" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
-  name                   = "Storage.WestEurope"
-  address_prefix         = "Storage.WestEurope"
+  name                   = "Storage.UKSouth"
+  address_prefix         = "Storage.UKSouth"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
@@ -184,8 +184,8 @@ resource "azurerm_route" "databricks_storage_westeurope" {
 resource "azurerm_route" "databricks_storage_northeurope" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
-  name                   = "Storage.NorthEurope"
-  address_prefix         = "Storage.NorthEurope"
+  name                   = "Storage.UKWest"
+  address_prefix         = "Storage.UKWest"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
@@ -193,8 +193,8 @@ resource "azurerm_route" "databricks_storage_northeurope" {
 resource "azurerm_route" "databricks_eventhub_westeurope" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
-  name                   = "EventHub.WestEurope"
-  address_prefix         = "EventHub.WestEurope"
+  name                   = "EventHub.UKSouth"
+  address_prefix         = "EventHub.UKSouth"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
