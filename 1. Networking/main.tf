@@ -163,7 +163,7 @@ resource "azurerm_route" "databricks_global" {
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
 
-resource "azurerm_route" "databricks_sql_westeurope" {
+resource "azurerm_route" "databricks_sql_uksouth" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
   name                   = "Sql.UKSouth"
@@ -172,7 +172,16 @@ resource "azurerm_route" "databricks_sql_westeurope" {
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
 
-resource "azurerm_route" "databricks_storage_westeurope" {
+resource "azurerm_route" "databricks_sql_ukwest" {
+  route_table_name       = azurerm_route_table.databricks.name
+  resource_group_name    = azurerm_route_table.databricks.resource_group_name
+  name                   = "Sql.UKWest"
+  address_prefix         = "Sql.UKWest"
+  next_hop_type          = "VirtualAppliance"
+  next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
+}
+
+resource "azurerm_route" "databricks_storage_uksouth" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
   name                   = "Storage.UKSouth"
@@ -181,7 +190,7 @@ resource "azurerm_route" "databricks_storage_westeurope" {
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
 
-resource "azurerm_route" "databricks_storage_northeurope" {
+resource "azurerm_route" "databricks_storage_ukwest" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
   name                   = "Storage.UKWest"
@@ -190,11 +199,20 @@ resource "azurerm_route" "databricks_storage_northeurope" {
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
 
-resource "azurerm_route" "databricks_eventhub_westeurope" {
+resource "azurerm_route" "databricks_eventhub_uksouth" {
   route_table_name       = azurerm_route_table.databricks.name
   resource_group_name    = azurerm_route_table.databricks.resource_group_name
   name                   = "EventHub.UKSouth"
   address_prefix         = "EventHub.UKSouth"
+  next_hop_type          = "VirtualAppliance"
+  next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
+}
+
+resource "azurerm_route" "databricks_eventhub_ukwest" {
+  route_table_name       = azurerm_route_table.databricks.name
+  resource_group_name    = azurerm_route_table.databricks.resource_group_name
+  name                   = "EventHub.UKWest"
+  address_prefix         = "EventHub.UKWest"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = data.azurerm_firewall.databricks.ip_configuration[0].private_ip_address
 }
